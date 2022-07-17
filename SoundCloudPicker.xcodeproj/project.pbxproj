@@ -7,26 +7,81 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF2B7D0728843DF700176D02 /* SoundCloudPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF713B152882EB5700D0ABAB /* SoundCloudPicker.framework */; platformFilter = ios; };
+		BF2B7D0828843DF700176D02 /* SoundCloudPicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF713B152882EB5700D0ABAB /* SoundCloudPicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BF2B7D0E28843E8400176D02 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF2B7D1028843E8400176D02 /* Localizable.strings */; };
 		BF713B192882EB5700D0ABAB /* SoundCloudPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = BF713B182882EB5700D0ABAB /* SoundCloudPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF713B262882EB9200D0ABAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF713B252882EB9200D0ABAB /* AppDelegate.swift */; };
-		BF713B282882EB9200D0ABAB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF713B272882EB9200D0ABAB /* SceneDelegate.swift */; };
 		BF713B2A2882EB9200D0ABAB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF713B292882EB9200D0ABAB /* ViewController.swift */; };
 		BF713B2D2882EB9200D0ABAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF713B2B2882EB9200D0ABAB /* Main.storyboard */; };
 		BF713B2F2882EB9400D0ABAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF713B2E2882EB9400D0ABAB /* Assets.xcassets */; };
 		BF713B322882EB9400D0ABAB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF713B302882EB9400D0ABAB /* LaunchScreen.storyboard */; };
+		BF713B3B2882F9E300D0ABAB /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF713B3A2882F9E300D0ABAB /* EmptyView.swift */; };
+		BF713B3E2882FA1300D0ABAB /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF713B3D2882FA1300D0ABAB /* Bundle+Extensions.swift */; };
+		BF713B402882FA2900D0ABAB /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF713B3F2882FA2900D0ABAB /* String+Localization.swift */; };
+		BF713B422882FA4000D0ABAB /* TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF713B412882FA4000D0ABAB /* TableCell.swift */; };
+		BF713B452882FA5B00D0ABAB /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF713B442882FA5B00D0ABAB /* Track.swift */; };
+		BF713B472882FAC500D0ABAB /* DataSourceEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF713B462882FAC500D0ABAB /* DataSourceEntities.swift */; };
+		BF713B4A2882FAFA00D0ABAB /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF713B492882FAFA00D0ABAB /* DataSource.swift */; };
+		BF713B4C2882FB0E00D0ABAB /* TokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF713B4B2882FB0E00D0ABAB /* TokenProvider.swift */; };
+		BF713B4E2882FB2E00D0ABAB /* TrackDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF713B4D2882FB2E00D0ABAB /* TrackDownloader.swift */; };
+		BF713B512882FB4300D0ABAB /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF713B502882FB4300D0ABAB /* Configuration.swift */; };
+		BF713B532882FC1A00D0ABAB /* SoundCloudPickerSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF713B522882FC1A00D0ABAB /* SoundCloudPickerSearchController.swift */; };
+		BF713B552882FC3A00D0ABAB /* SoundCloudPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF713B542882FC3A00D0ABAB /* SoundCloudPickerViewController.swift */; };
+		BF713B572882FCCE00D0ABAB /* SoundCloudPickerViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF713B562882FCCE00D0ABAB /* SoundCloudPickerViewController+TableView.swift */; };
+		BF713B592882FCE700D0ABAB /* SoundCloudPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF713B582882FCE700D0ABAB /* SoundCloudPicker.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		BF2B7D0928843DF700176D02 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF713B0C2882EB5700D0ABAB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF713B142882EB5700D0ABAB;
+			remoteInfo = SoundCloudPicker;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BF2B7D0B28843DF700176D02 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BF2B7D0828843DF700176D02 /* SoundCloudPicker.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		BF2B7D0F28843E8400176D02 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BF2B7D1128843E9A00176D02 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BF713B152882EB5700D0ABAB /* SoundCloudPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SoundCloudPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF713B182882EB5700D0ABAB /* SoundCloudPicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SoundCloudPicker.h; sourceTree = "<group>"; };
 		BF713B232882EB9200D0ABAB /* SoundCloudPickerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoundCloudPickerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF713B252882EB9200D0ABAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BF713B272882EB9200D0ABAB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		BF713B292882EB9200D0ABAB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BF713B2C2882EB9200D0ABAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BF713B2E2882EB9400D0ABAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF713B312882EB9400D0ABAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF713B332882EB9400D0ABAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF713B3A2882F9E300D0ABAB /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		BF713B3D2882FA1300D0ABAB /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
+		BF713B3F2882FA2900D0ABAB /* String+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localization.swift"; sourceTree = "<group>"; };
+		BF713B412882FA4000D0ABAB /* TableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCell.swift; sourceTree = "<group>"; };
+		BF713B442882FA5B00D0ABAB /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		BF713B462882FAC500D0ABAB /* DataSourceEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceEntities.swift; sourceTree = "<group>"; };
+		BF713B492882FAFA00D0ABAB /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		BF713B4B2882FB0E00D0ABAB /* TokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenProvider.swift; sourceTree = "<group>"; };
+		BF713B4D2882FB2E00D0ABAB /* TrackDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDownloader.swift; sourceTree = "<group>"; };
+		BF713B502882FB4300D0ABAB /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		BF713B522882FC1A00D0ABAB /* SoundCloudPickerSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundCloudPickerSearchController.swift; sourceTree = "<group>"; };
+		BF713B542882FC3A00D0ABAB /* SoundCloudPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundCloudPickerViewController.swift; sourceTree = "<group>"; };
+		BF713B562882FCCE00D0ABAB /* SoundCloudPickerViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SoundCloudPickerViewController+TableView.swift"; sourceTree = "<group>"; };
+		BF713B582882FCE700D0ABAB /* SoundCloudPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundCloudPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,18 +96,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF2B7D0728843DF700176D02 /* SoundCloudPicker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF2B7D0628843DF700176D02 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BF713B0B2882EB5700D0ABAB = {
 			isa = PBXGroup;
 			children = (
 				BF713B172882EB5700D0ABAB /* SoundCloudPicker */,
 				BF713B242882EB9200D0ABAB /* SoundCloudPickerDemo */,
 				BF713B162882EB5700D0ABAB /* Products */,
+				BF2B7D0628843DF700176D02 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -69,6 +133,8 @@
 			isa = PBXGroup;
 			children = (
 				BF713B182882EB5700D0ABAB /* SoundCloudPicker.h */,
+				BF713B372882F9BE00D0ABAB /* Resources */,
+				BF713B382882F9C700D0ABAB /* Classes */,
 			);
 			path = SoundCloudPicker;
 			sourceTree = "<group>";
@@ -77,7 +143,6 @@
 			isa = PBXGroup;
 			children = (
 				BF713B252882EB9200D0ABAB /* AppDelegate.swift */,
-				BF713B272882EB9200D0ABAB /* SceneDelegate.swift */,
 				BF713B292882EB9200D0ABAB /* ViewController.swift */,
 				BF713B2B2882EB9200D0ABAB /* Main.storyboard */,
 				BF713B2E2882EB9400D0ABAB /* Assets.xcassets */,
@@ -85,6 +150,75 @@
 				BF713B332882EB9400D0ABAB /* Info.plist */,
 			);
 			path = SoundCloudPickerDemo;
+			sourceTree = "<group>";
+		};
+		BF713B372882F9BE00D0ABAB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BF2B7D1028843E8400176D02 /* Localizable.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		BF713B382882F9C700D0ABAB /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				BF713B502882FB4300D0ABAB /* Configuration.swift */,
+				BF713B4F2882FB3A00D0ABAB /* Controllers */,
+				BF713B482882FAEF00D0ABAB /* Services */,
+				BF713B432882FA5200D0ABAB /* Models */,
+				BF713B3C2882F9F900D0ABAB /* Utils */,
+				BF713B392882F9D600D0ABAB /* Views */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		BF713B392882F9D600D0ABAB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BF713B3A2882F9E300D0ABAB /* EmptyView.swift */,
+				BF713B412882FA4000D0ABAB /* TableCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BF713B3C2882F9F900D0ABAB /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				BF713B3D2882FA1300D0ABAB /* Bundle+Extensions.swift */,
+				BF713B3F2882FA2900D0ABAB /* String+Localization.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		BF713B432882FA5200D0ABAB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BF713B442882FA5B00D0ABAB /* Track.swift */,
+				BF713B462882FAC500D0ABAB /* DataSourceEntities.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BF713B482882FAEF00D0ABAB /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				BF713B492882FAFA00D0ABAB /* DataSource.swift */,
+				BF713B4B2882FB0E00D0ABAB /* TokenProvider.swift */,
+				BF713B4D2882FB2E00D0ABAB /* TrackDownloader.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		BF713B4F2882FB3A00D0ABAB /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BF713B582882FCE700D0ABAB /* SoundCloudPicker.swift */,
+				BF713B542882FC3A00D0ABAB /* SoundCloudPickerViewController.swift */,
+				BF713B562882FCCE00D0ABAB /* SoundCloudPickerViewController+TableView.swift */,
+				BF713B522882FC1A00D0ABAB /* SoundCloudPickerSearchController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,10 +260,12 @@
 				BF713B1F2882EB9200D0ABAB /* Sources */,
 				BF713B202882EB9200D0ABAB /* Frameworks */,
 				BF713B212882EB9200D0ABAB /* Resources */,
+				BF2B7D0B28843DF700176D02 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				BF2B7D0A28843DF700176D02 /* PBXTargetDependency */,
 			);
 			name = SoundCloudPickerDemo;
 			productName = SoundCloudPickerDemo;
@@ -148,6 +284,7 @@
 				TargetAttributes = {
 					BF713B142882EB5700D0ABAB = {
 						CreatedOnToolsVersion = 13.4.1;
+						LastSwiftMigration = 1340;
 					};
 					BF713B222882EB9200D0ABAB = {
 						CreatedOnToolsVersion = 13.4.1;
@@ -161,6 +298,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = BF713B0B2882EB5700D0ABAB;
 			productRefGroup = BF713B162882EB5700D0ABAB /* Products */;
@@ -178,6 +316,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF2B7D0E28843E8400176D02 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +337,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF713B552882FC3A00D0ABAB /* SoundCloudPickerViewController.swift in Sources */,
+				BF713B4A2882FAFA00D0ABAB /* DataSource.swift in Sources */,
+				BF713B472882FAC500D0ABAB /* DataSourceEntities.swift in Sources */,
+				BF713B4C2882FB0E00D0ABAB /* TokenProvider.swift in Sources */,
+				BF713B402882FA2900D0ABAB /* String+Localization.swift in Sources */,
+				BF713B452882FA5B00D0ABAB /* Track.swift in Sources */,
+				BF713B3B2882F9E300D0ABAB /* EmptyView.swift in Sources */,
+				BF713B532882FC1A00D0ABAB /* SoundCloudPickerSearchController.swift in Sources */,
+				BF713B512882FB4300D0ABAB /* Configuration.swift in Sources */,
+				BF713B422882FA4000D0ABAB /* TableCell.swift in Sources */,
+				BF713B3E2882FA1300D0ABAB /* Bundle+Extensions.swift in Sources */,
+				BF713B572882FCCE00D0ABAB /* SoundCloudPickerViewController+TableView.swift in Sources */,
+				BF713B4E2882FB2E00D0ABAB /* TrackDownloader.swift in Sources */,
+				BF713B592882FCE700D0ABAB /* SoundCloudPicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,13 +360,30 @@
 			files = (
 				BF713B2A2882EB9200D0ABAB /* ViewController.swift in Sources */,
 				BF713B262882EB9200D0ABAB /* AppDelegate.swift in Sources */,
-				BF713B282882EB9200D0ABAB /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		BF2B7D0A28843DF700176D02 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = BF713B142882EB5700D0ABAB /* SoundCloudPicker */;
+			targetProxy = BF2B7D0928843DF700176D02 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		BF2B7D1028843E8400176D02 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF2B7D0F28843E8400176D02 /* en */,
+				BF2B7D1128843E9A00176D02 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		BF713B2B2882EB9200D0ABAB /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -237,6 +407,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -284,7 +455,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -300,6 +471,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -341,7 +513,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -356,6 +528,7 @@
 		BF713B1D2882EB5700D0ABAB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -377,6 +550,7 @@
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -385,6 +559,7 @@
 		BF713B1E2882EB5700D0ABAB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;

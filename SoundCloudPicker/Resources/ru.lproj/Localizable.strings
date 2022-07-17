@@ -1,0 +1,23 @@
+/* 
+  Localizable.strings
+  SoundCloudPicker
+
+  Created by Aibek Mazhitov on 17.07.22.
+  
+*/
+
+"search.title" = "SoundCloud";
+"search.placeholder" = "Искать треки";
+
+"error.noResults.title" = "Никаких результатов";
+"error.noResults.description" = "Пожалуйста, обновите поиск и попробуйте снова.";
+
+"error.limitReached.title" = "Достигнут лимит";
+"error.limitReached.description" = "Упс! Вы достигли предела использования API SoundCloud.\n\nПожалуйста, свяжитесь с разработчиком.";
+
+"error.serverError.title" = "Серверная ошибка";
+"error.serverError.description" = "Упс! Что-то пошло не так. Пожалуйста, попробуйте еще раз.\n\nЗамечание: SoundCloud может быть недоступен в некоторых регионах из-за местных законов.";
+
+"download.title" = "Скачивание";
+"download.cancel" = "Отменить";
+

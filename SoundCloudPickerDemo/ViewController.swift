@@ -6,14 +6,32 @@
 //
 
 import UIKit
+import SoundCloudPicker
 
 class ViewController: UIViewController {
 
+  var picker: SoundCloudPicker!
+
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view.
+
+    let conf = SoundCloudPickerConfiguration(clientId: "", clientSecret: "")
+
+    picker = SoundCloudPicker(configuration: conf)
+    picker.pickerDelegate = self
   }
 
-
+  @IBAction func handleClickOpen(_ sender: Any) {
+    present(picker, animated: true)
+  }
 }
 
+extension ViewController: SoundCloudPickerDelegate {
+  func soundCloudPicker(_ soundCloudPicker: SoundCloudPicker, didSelectTrack track: Track) {
+    dismiss(animated: true)
+  }
+
+  func soundCloudPickerDidCancel(_ soundCloudPicker: SoundCloudPicker) {
+    dismiss(animated: true)
+  }
+}
