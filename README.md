@@ -36,6 +36,21 @@ Then run `pod install`.
 
 ## Usage
 
+⚠️ Before you get started, you need to register as a developer on [SoundCloud for Developers](https://developers.soundcloud.com/) portal. Once registered, create a new app to get an **Client ID** and a **Client Secret**.
+
+### Configuration
+
+The `SoundCloudPicker` is configured with an instance of `SoundCloudPickerConfiguration`:
+
+```swift
+SoundCloudPickerConfiguration(clientId: String, clientSecret: String)
+```
+
+|Property|Type|Optional/Required|Default|
+|--------|----|-----------------|-------|
+|**`clientId`**|_String_|Required|N/A|
+|**`clientSecret`**|_String_|Required|N/A|
+
 ### Presenting
 
 `SoundCloudPicker` is a subclass of `UINavigationController`. We recommend that you present it modally or as a popover on iPad. Before presenting it, you need to implement the `SoundCloudPickerDelegate` protocol, and use the `pickerDelegate` property to get the results.

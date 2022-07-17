@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
   spec.name           = "SoundCloudPicker"
-  spec.version        = "1.0.0"
-  spec.summary        = "A SoundCloud picker to search for and use from ChkSnd."
+  spec.version        = "1.0.1"
+  spec.summary        = "SoundCloudPicker is an iOS UI component that allows you to quickly search the SoundCloud tracks with just a few lines of code."
   spec.license        = { :type => "MIT" }
   spec.homepage       = "https://github.com/chksnd/soundcloud-picker-ios"
   spec.author         = { "Aibek Mazhitov" => "aimazhdev@gmail.com" }
