@@ -15,7 +15,10 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    let conf = SoundCloudPickerConfiguration(clientId: "", clientSecret: "")
+    let conf = SoundCloudPickerConfiguration(
+      clientId: ProcessInfo.processInfo.environment["CLIENT_ID"] ?? "",
+      clientSecret: ProcessInfo.processInfo.environment["CLIENT_SECRET"] ?? ""
+    )
 
     picker = SoundCloudPicker(configuration: conf)
     picker.pickerDelegate = self
