@@ -1,0 +1,15 @@
+Pod::Spec.new do |spec|
+  spec.name           = "SoundCloudPicker"
+  spec.version        = "1.0.0"
+  spec.summary        = "A SoundCloud picker to search for and use from ChkSnd."
+  spec.license        = { :type => "MIT" }
+  spec.homepage       = "https://github.com/chksnd/soundcloud-picker-ios"
+  spec.author         = { "Aibek Mazhitov" => "aimazhdev@gmail.com" }
+  spec.source         = { :git => "https://github.com/chksnd/soundcloud-picker-ios.git", :tag => "#{spec.version}" }
+  spec.source_files   = "SoundCloudPicker/**/*.{h,m,swift,xib,strings,stringsdict}"
+  spec.exclude_files  = "SoundCloudPickerDemo"
+  spec.frameworks     = "Foundation", "UIKit"
+  spec.platform       = :ios, "13.0"
+  spec.requires_arc   = true
+  spec.swift_version  = "5.6.1"
+end
