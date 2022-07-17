@@ -64,7 +64,7 @@ extension TrackDownloader: URLSessionDownloadDelegate {
         create: true
       )
 
-      let tracksDirectory = documentsDirectory.appendingPathComponent("tracks", isDirectory: true)
+      let tracksDirectory = documentsDirectory.appendingPathComponent("sc", isDirectory: true)
       try FileManager.default.createDirectory(at: tracksDirectory, withIntermediateDirectories: true, attributes: nil)
 
       let audioURL = tracksDirectory.appendingPathComponent("\(id).mp3")
