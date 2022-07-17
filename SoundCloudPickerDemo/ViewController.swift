@@ -31,6 +31,9 @@ class ViewController: UIViewController {
 
 extension ViewController: SoundCloudPickerDelegate {
   func soundCloudPicker(_ soundCloudPicker: SoundCloudPicker, didSelectTrack track: Track) {
+    print("--- track info:")
+    print(track)
+    print("---")
     dismiss(animated: true)
   }
 
