@@ -17,7 +17,7 @@ class SoundCloudPickerSearchController: UISearchController {
 }
 
 class CustomSearchBar: UISearchBar {
-  override func setShowsCancelButton(_ showsCancelButton: Bool, animated: Bool) {
+  override func setShowsCancelButton(_: Bool, animated _: Bool) {
     super.setShowsCancelButton(false, animated: false)
   }
 }

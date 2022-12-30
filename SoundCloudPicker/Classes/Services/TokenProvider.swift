@@ -8,7 +8,6 @@
 import Foundation
 
 class TokenProvider {
-
   static let shared = TokenProvider()
 
   private let soundCloudTokenKey = "sctk"

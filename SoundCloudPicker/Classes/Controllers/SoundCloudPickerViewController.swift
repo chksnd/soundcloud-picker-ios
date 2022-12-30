@@ -5,24 +5,22 @@
 //  Created by Aibek Mazhitov on 16.07.22.
 //
 
+import AVFoundation
 import UIKit
 
 protocol SoundCloudPickerViewControllerDelegate {
-  func soundCloudPickerViewController(_ viewController: SoundCloudPickerViewController, didSelectTrack track: Track)
+  func soundCloudPickerViewController(_ viewController: SoundCloudPickerViewController, didSelectTrack url: URL)
   func soundCloudPickerViewControllerDidCancel(_ viewController: SoundCloudPickerViewController)
 }
 
 public class SoundCloudPickerViewController: UIViewController {
-
   // MARK: - View attributes
 
-  private lazy var cancelBarButtonItem: UIBarButtonItem = {
-    return UIBarButtonItem(
-      barButtonSystemItem: .cancel,
-      target: self,
-      action: #selector(handleTapBarButtonItemCancel)
-    )
-  }()
+  private lazy var cancelBarButtonItem: UIBarButtonItem = .init(
+    barButtonSystemItem: .cancel,
+    target: self,
+    action: #selector(handleTapBarButtonItemCancel)
+  )
 
   private lazy var searchController: SoundCloudPickerSearchController = {
     let controller = SoundCloudPickerSearchController(searchResultsController: nil)
@@ -88,7 +86,7 @@ public class SoundCloudPickerViewController: UIViewController {
       let item = dataSource.items[selectedIndex]
 
       DispatchQueue.global().async {
-        self.trackDownloader.download(id: item.id, streamURL: item.stream_url)
+        self.trackDownloader.download(item: item)
       }
 
       present(downloadDialog, animated: true)
@@ -105,7 +103,7 @@ public class SoundCloudPickerViewController: UIViewController {
 
   // MARK: - View Life Cycle
 
-  public override func viewDidLoad() {
+  override public func viewDidLoad() {
     super.viewDidLoad()
 
     setupNotifications()
@@ -117,7 +115,7 @@ public class SoundCloudPickerViewController: UIViewController {
     setupDownloadingProgress()
   }
 
-  public override func viewWillDisappear(_ animated: Bool) {
+  override public func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
     searchController.dismiss(animated: true)
   }
@@ -152,7 +150,7 @@ public class SoundCloudPickerViewController: UIViewController {
       tableView.topAnchor.constraint(equalTo: view.topAnchor),
       tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
       tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-      tableView.rightAnchor.constraint(equalTo: view.rightAnchor)
+      tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
     ])
   }
 
@@ -191,7 +189,7 @@ public class SoundCloudPickerViewController: UIViewController {
       emptyView.topAnchor.constraint(equalTo: view.topAnchor),
       emptyView.leftAnchor.constraint(equalTo: view.leftAnchor),
       emptyView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-      emptyView.rightAnchor.constraint(equalTo: view.rightAnchor)
+      emptyView.rightAnchor.constraint(equalTo: view.rightAnchor),
     ])
   }
 
@@ -201,7 +199,7 @@ public class SoundCloudPickerViewController: UIViewController {
 
   // MARK: - Actions
 
-  @objc private func handleTapBarButtonItemCancel(_ sender: Any) {
+  @objc private func handleTapBarButtonItemCancel(_: Any) {
     searchController.searchBar.resignFirstResponder()
     delegate?.soundCloudPickerViewControllerDidCancel(self)
   }
@@ -237,9 +235,10 @@ public class SoundCloudPickerViewController: UIViewController {
 
   @objc func keyboardWillShowNotification(_ notification: Notification) {
     guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect)?.size,
-          let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval else {
-            return
-          }
+          let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval
+    else {
+      return
+    }
 
     let bottomInset = keyboardSize.height - view.safeAreaInsets.bottom
     let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: bottomInset, right: 0.0)
@@ -275,9 +274,9 @@ extension SoundCloudPickerViewController: UISearchControllerDelegate {}
 // MARK: - DataSourceDelegate
 
 extension SoundCloudPickerViewController: DataSourceDelegate {
-  func dataSource(_ dataSource: DataSource, didSearch items: [DataSourceItem]) {
+  func dataSource(_: DataSource, didSearch items: [DataSourceItem]) {
     #if DEBUG
-    print("dataSource.didSearch")
+      print("dataSource.didSearch")
     #endif
 
     DispatchQueue.main.async {
@@ -290,9 +289,9 @@ extension SoundCloudPickerViewController: DataSourceDelegate {
     }
   }
 
-  func dataSource(_ dataSource: DataSource, searchDidFailed error: DataSourceError) {
+  func dataSource(_: DataSource, searchDidFailed error: DataSourceError) {
     #if DEBUG
-    print("dataSource.searchDidFailed: \(error)")
+      print("dataSource.searchDidFailed: \(error)")
     #endif
 
     DispatchQueue.main.async {
@@ -312,9 +311,9 @@ extension SoundCloudPickerViewController: DataSourceDelegate {
     }
   }
 
-  func dataSource(_ dataSource: DataSource, invalidateDidFailed error: DataSourceError) {
+  func dataSource(_: DataSource, invalidateDidFailed error: DataSourceError) {
     #if DEBUG
-    print("dataSource.invalidateDidFailed: \(error)")
+      print("dataSource.invalidateDidFailed: \(error)")
     #endif
 
     DispatchQueue.main.async {
@@ -327,9 +326,9 @@ extension SoundCloudPickerViewController: DataSourceDelegate {
     }
   }
 
-  func dataSourceDidInvalidateToken(_ dataSource: DataSource) {
+  func dataSourceDidInvalidateToken(_: DataSource) {
     #if DEBUG
-    print("dataSource.didInvalidateToken")
+      print("dataSource.didInvalidateToken")
     #endif
 
     DispatchQueue.main.async {
@@ -340,50 +339,37 @@ extension SoundCloudPickerViewController: DataSourceDelegate {
 }
 
 extension SoundCloudPickerViewController: TrackDownloaderDelegate {
-  func trackDownloader(_ trackDownloader: TrackDownloader, didFailWith error: Error) {
+  func trackDownloader(_: TrackDownloader, didFailWith error: Error) {
     #if DEBUG
-    print("trackDownloader.didFailWith: \(error)")
+      print("trackDownloader.didFailWith: \(error)")
     #endif
     DispatchQueue.main.async {
       self.downloadDialog.dismiss(animated: true)
     }
   }
 
-  func trackDownloader(_ trackDownloader: TrackDownloader, didFinishAt audioURL: URL) {
+  func trackDownloader(_: TrackDownloader, didFinishAt audioURL: URL) {
     #if DEBUG
-    print("trackDownloader.didFinishAt: \(audioURL)")
+      print("trackDownloader.didFinishAt: \(audioURL)")
     #endif
     DispatchQueue.main.async {
       self.downloadDialog.dismiss(animated: true) {
-        let item = self.dataSource.items[self.selectedIndex]
-
-        var artworkURL: URL?
-        if let url = item.artwork_url {
-          artworkURL = URL(string: url)
-        }
-
-        self.delegate?.soundCloudPickerViewController(self, didSelectTrack: Track(
-          artist: item.user.username,
-          title: item.title,
-          audioURL: audioURL,
-          artworkURL: artworkURL
-        ))
-
+        self.delegate?.soundCloudPickerViewController(self, didSelectTrack: audioURL)
         self.selectedIndex = -1
       }
     }
   }
 
-  func trackDownloader(_ trackDownloader: TrackDownloader, onProgress progress: Float) {
+  func trackDownloader(_: TrackDownloader, onProgress progress: Float) {
     DispatchQueue.main.async {
       self.downloadProgress.progress = progress
-      self.downloadDialog.message = String.init(format: "%0.0f", progress * 100).appending("%")
+      self.downloadDialog.message = String(format: "%0.0f", progress * 100).appending("%")
     }
   }
 
-  func trackDownloaderDidCancel(_ trackDownloader: TrackDownloader) {
+  func trackDownloaderDidCancel(_: TrackDownloader) {
     #if DEBUG
-    print("trackDownloader.didCancel")
+      print("trackDownloader.didCancel")
     #endif
   }
 }

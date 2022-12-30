@@ -36,7 +36,6 @@ enum EmptyViewState {
 }
 
 class EmptyView: UIView {
-
   // MARK: - Properties
 
   private lazy var containerView: UIView = {
@@ -82,7 +81,8 @@ class EmptyView: UIView {
     setupDescriptionLabel()
   }
 
-  required init?(coder aDecoder: NSCoder) {
+  @available(*, unavailable)
+  required init?(coder _: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 
@@ -96,7 +96,7 @@ class EmptyView: UIView {
       containerView.leftAnchor.constraint(equalTo: leftAnchor),
       containerView.bottomAnchor.constraint(greaterThanOrEqualTo: topAnchor, constant: 0),
       containerView.rightAnchor.constraint(equalTo: rightAnchor),
-      containerView.centerYAnchor.constraint(equalTo: centerYAnchor)
+      containerView.centerYAnchor.constraint(equalTo: centerYAnchor),
     ])
   }
 
@@ -106,7 +106,7 @@ class EmptyView: UIView {
     NSLayoutConstraint.activate([
       titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor),
       titleLabel.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: Constants.margin),
-      titleLabel.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -Constants.margin)
+      titleLabel.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -Constants.margin),
     ])
   }
 
@@ -117,7 +117,7 @@ class EmptyView: UIView {
       descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Constants.padding),
       descriptionLabel.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: Constants.margin),
       descriptionLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
-      descriptionLabel.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -Constants.margin)
+      descriptionLabel.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -Constants.margin),
     ])
   }
 
@@ -125,12 +125,12 @@ class EmptyView: UIView {
     titleLabel.text = state?.title
     descriptionLabel.text = state?.description
   }
-
 }
 
 // MARK: - Constants
+
 private extension EmptyView {
-  struct Constants {
+  enum Constants {
     static let margin: CGFloat = 20.0
     static let padding: CGFloat = 10.0
   }

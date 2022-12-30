@@ -8,11 +8,11 @@
 import UIKit
 
 extension SoundCloudPickerViewController: UITableViewDataSource {
-  public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return dataSource.items.count
+  public func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
+    dataSource.items.count
   }
 
-  public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+  public func tableView(_: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let item = dataSource.items[indexPath.row]
 
     let cell = TableCell(style: .subtitle, reuseIdentifier: TableCell.reuseIdentifier)

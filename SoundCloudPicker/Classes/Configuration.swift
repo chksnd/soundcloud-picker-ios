@@ -8,11 +8,10 @@
 import Foundation
 
 struct Configuration {
-  static var shared: SoundCloudPickerConfiguration = SoundCloudPickerConfiguration()
+  static var shared: SoundCloudPickerConfiguration = .init()
 }
 
 public struct SoundCloudPickerConfiguration {
-
   public var clientId = ""
   public var clientSecret = ""
 
@@ -25,4 +24,3 @@ public struct SoundCloudPickerConfiguration {
 
   public init() {}
 }
-

@@ -8,7 +8,7 @@ SoundCloudPicker is an iOS UI component that allows you to quickly search the So
 
 ## Description
 
-SoundCloudPicker is a view controller. You present it to offer your users to search and use tracks from [SoundCloud](https://soundcloud.com). Once they have selected track, the picker downloads it and the view controller returns the track info a `Track` object that you can use for further purposes.
+SoundCloudPicker is a view controller. You present it to offer your users to search and use tracks from [SoundCloud](https://soundcloud.com). Once they have selected track, the picker downloads it and the view controller returns the track info a `URL` object that you can use for further purposes.
 
 ## Requirements
 
@@ -57,14 +57,14 @@ SoundCloudPickerConfiguration(clientId: String, clientSecret: String)
 
 ```swift
 protocol SoundCloudPickerDelegate {
-  func soundCloudPicker(_ soundCloudPicker: SoundCloudPicker, didSelectTrack track: Track)
+  func soundCloudPicker(_ soundCloudPicker: SoundCloudPicker, didSelectTrack url: URL)
   func soundCloudPickerDidCancel(_ soundCloudPicker: SoundCloudPicker)
 }
 ```
 
 ### Using the results
 
-`SoundCloudPicker` returns a `Track` object that represents the track information including *artist*, *title*, *artworkURL*, and *audioURL*.
+`SoundCloudPicker` returns a `URL` object that represents the track information including *artist*, *title*, and *artwork* within metadata of the file.
 
 ## License
 

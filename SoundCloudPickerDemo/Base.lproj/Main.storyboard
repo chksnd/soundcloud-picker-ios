@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,21 +18,56 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Lo-E2-Qaz">
-                                <rect key="frame" x="188" y="433" width="38" height="30"/>
+                                <rect key="frame" x="157" y="812" width="100" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="43R-Vb-hJc"/>
+                                    <constraint firstAttribute="width" constant="100" id="HbK-Py-MCU"/>
+                                </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Open"/>
                                 <connections>
                                     <action selector="handleClickOpen:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rdU-4I-bSL"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I8C-nr-mNl" userLabel="Artwork">
+                                <rect key="frame" x="157" y="398" width="100" height="100"/>
+                                <color key="backgroundColor" systemColor="systemGray2Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="1cg-eQ-gUo"/>
+                                    <constraint firstAttribute="width" constant="100" id="4tg-LD-U6S"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLA-Qs-K0n" userLabel="Artist">
+                                <rect key="frame" x="167.5" y="514" width="79" height="41"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XSw-bE-5kX" userLabel="Title">
+                                <rect key="frame" x="186" y="571" width="42" height="21"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="JLA-Qs-K0n" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0GQ-6x-Adw"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="1Lo-E2-Qaz" secondAttribute="bottom" id="5b0-Lu-gdv"/>
+                            <constraint firstItem="I8C-nr-mNl" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Ail-Ef-zdL"/>
+                            <constraint firstItem="XSw-bE-5kX" firstAttribute="top" secondItem="JLA-Qs-K0n" secondAttribute="bottom" constant="16" id="DFJ-Sj-OiX"/>
+                            <constraint firstItem="XSw-bE-5kX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EBt-jm-VR4"/>
                             <constraint firstItem="1Lo-E2-Qaz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="G5F-9v-rzR"/>
-                            <constraint firstItem="1Lo-E2-Qaz" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="uDp-yD-JH4"/>
+                            <constraint firstItem="JLA-Qs-K0n" firstAttribute="top" secondItem="I8C-nr-mNl" secondAttribute="bottom" constant="16" id="Gsi-Qq-NW0"/>
+                            <constraint firstItem="I8C-nr-mNl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="M6o-UP-Uyq"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="artist" destination="JLA-Qs-K0n" id="ZOf-GK-2t9"/>
+                        <outlet property="artwork" destination="I8C-nr-mNl" id="Nz8-2v-V4E"/>
+                        <outlet property="trackName" destination="XSw-bE-5kX" id="Wmg-09-Hxr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -42,6 +77,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

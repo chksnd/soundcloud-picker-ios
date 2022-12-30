@@ -20,7 +20,6 @@
 		BF713B3E2882FA1300D0ABAB /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF713B3D2882FA1300D0ABAB /* Bundle+Extensions.swift */; };
 		BF713B402882FA2900D0ABAB /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF713B3F2882FA2900D0ABAB /* String+Localization.swift */; };
 		BF713B422882FA4000D0ABAB /* TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF713B412882FA4000D0ABAB /* TableCell.swift */; };
-		BF713B452882FA5B00D0ABAB /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF713B442882FA5B00D0ABAB /* Track.swift */; };
 		BF713B472882FAC500D0ABAB /* DataSourceEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF713B462882FAC500D0ABAB /* DataSourceEntities.swift */; };
 		BF713B4A2882FAFA00D0ABAB /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF713B492882FAFA00D0ABAB /* DataSource.swift */; };
 		BF713B4C2882FB0E00D0ABAB /* TokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF713B4B2882FB0E00D0ABAB /* TokenProvider.swift */; };
@@ -72,7 +71,6 @@
 		BF713B3D2882FA1300D0ABAB /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
 		BF713B3F2882FA2900D0ABAB /* String+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localization.swift"; sourceTree = "<group>"; };
 		BF713B412882FA4000D0ABAB /* TableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCell.swift; sourceTree = "<group>"; };
-		BF713B442882FA5B00D0ABAB /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		BF713B462882FAC500D0ABAB /* DataSourceEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceEntities.swift; sourceTree = "<group>"; };
 		BF713B492882FAFA00D0ABAB /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		BF713B4B2882FB0E00D0ABAB /* TokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenProvider.swift; sourceTree = "<group>"; };
@@ -194,7 +192,6 @@
 		BF713B432882FA5200D0ABAB /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				BF713B442882FA5B00D0ABAB /* Track.swift */,
 				BF713B462882FAC500D0ABAB /* DataSourceEntities.swift */,
 			);
 			path = Models;
@@ -342,7 +339,6 @@
 				BF713B472882FAC500D0ABAB /* DataSourceEntities.swift in Sources */,
 				BF713B4C2882FB0E00D0ABAB /* TokenProvider.swift in Sources */,
 				BF713B402882FA2900D0ABAB /* String+Localization.swift in Sources */,
-				BF713B452882FA5B00D0ABAB /* Track.swift in Sources */,
 				BF713B3B2882F9E300D0ABAB /* EmptyView.swift in Sources */,
 				BF713B532882FC1A00D0ABAB /* SoundCloudPickerSearchController.swift in Sources */,
 				BF713B512882FB4300D0ABAB /* Configuration.swift in Sources */,

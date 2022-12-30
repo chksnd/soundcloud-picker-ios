@@ -24,7 +24,6 @@ protocol DataSourceDelegate {
 }
 
 class DataSource {
-
   var delegate: DataSourceDelegate
   var items: [DataSourceItem] = []
 
@@ -58,7 +57,7 @@ class DataSource {
     ]
 
     let task = URLSession.shared.dataTask(with: request) { data, response, error in
-      if let error = error {
+      if let error {
         self.delegate.dataSource(self, searchDidFailed: .common(error))
         return
       }
@@ -75,7 +74,7 @@ class DataSource {
         }
       }
 
-      guard let data = data else {
+      guard let data else {
         self.delegate.dataSource(self, searchDidFailed: .noResults)
         return
       }
@@ -114,7 +113,7 @@ class DataSource {
     ]
 
     let task = URLSession.shared.dataTask(with: request) { data, response, error in
-      if let error = error {
+      if let error {
         self.delegate.dataSource(self, invalidateDidFailed: .common(error))
         return
       }
@@ -131,7 +130,7 @@ class DataSource {
         }
       }
 
-      guard let data = data else {
+      guard let data else {
         self.delegate.dataSource(self, invalidateDidFailed: .noResults)
         return
       }

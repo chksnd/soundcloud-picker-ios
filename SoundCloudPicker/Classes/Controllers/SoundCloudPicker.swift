@@ -8,12 +8,11 @@
 import UIKit
 
 public protocol SoundCloudPickerDelegate {
-  func soundCloudPicker(_ soundCloudPicker: SoundCloudPicker, didSelectTrack track: Track)
+  func soundCloudPicker(_ soundCloudPicker: SoundCloudPicker, didSelectTrack url: URL)
   func soundCloudPickerDidCancel(_ soundCloudPicker: SoundCloudPicker)
 }
 
 public class SoundCloudPicker: UINavigationController {
-
   public var pickerDelegate: SoundCloudPickerDelegate?
 
   private let viewController: SoundCloudPickerViewController
@@ -26,24 +25,25 @@ public class SoundCloudPicker: UINavigationController {
     Configuration.shared = configuration
   }
 
-  public override func viewDidLoad() {
+  override public func viewDidLoad() {
     super.viewDidLoad()
 
     viewController.delegate = self
     viewControllers = [viewController]
   }
 
-  public required init?(coder aDecoder: NSCoder) {
+  @available(*, unavailable)
+  public required init?(coder _: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 }
 
 extension SoundCloudPicker: SoundCloudPickerViewControllerDelegate {
-  func soundCloudPickerViewController(_ viewController: SoundCloudPickerViewController, didSelectTrack track: Track) {
-    pickerDelegate?.soundCloudPicker(self, didSelectTrack: track)
+  func soundCloudPickerViewController(_: SoundCloudPickerViewController, didSelectTrack url: URL) {
+    pickerDelegate?.soundCloudPicker(self, didSelectTrack: url)
   }
 
-  func soundCloudPickerViewControllerDidCancel(_ viewController: SoundCloudPickerViewController) {
+  func soundCloudPickerViewControllerDidCancel(_: SoundCloudPickerViewController) {
     pickerDelegate?.soundCloudPickerDidCancel(self)
   }
 }
