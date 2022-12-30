@@ -19,4 +19,5 @@
 "error.serverError.description" = "Oops! Something went wrong. Please try again.\n\nNote: SoundCloud can be unavailable in some regions due to local regulations.";
 
 "download.title" = "Downloading";
+"download.title.exporting" = "Exporting";
 "download.cancel" = "Cancel";

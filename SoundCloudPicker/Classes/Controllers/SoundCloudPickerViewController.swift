@@ -70,12 +70,20 @@ public class SoundCloudPickerViewController: UIViewController {
     return view
   }()
 
+  lazy var downloadSpinner: UIActivityIndicatorView = {
+    let view = UIActivityIndicatorView()
+    view.translatesAutoresizingMaskIntoConstraints = false
+    view.startAnimating()
+    view.isHidden = true
+    return view
+  }()
+
   // MARK: - Logic attributes
 
   var delegate: SoundCloudPickerViewControllerDelegate?
 
   lazy var dataSource = DataSource(delegate: self)
-  lazy var trackDownloader = TrackDownloader(delegate: self)
+  lazy var trackDownloader: TrackDownloader = DefaultTrackDownloader(delegate: self)
 
   var selectedIndex: Int = -1 {
     didSet {
@@ -166,11 +174,17 @@ public class SoundCloudPickerViewController: UIViewController {
   private func setupDownloadingProgress() {
     if let view = downloadDialog.view {
       view.addSubview(downloadProgress)
+      view.addSubview(downloadSpinner)
 
       NSLayoutConstraint.activate([
         downloadProgress.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -45),
         downloadProgress.leadingAnchor.constraint(equalTo: view.leadingAnchor),
         downloadProgress.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+      ])
+
+      NSLayoutConstraint.activate([
+        downloadSpinner.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -35),
+        downloadSpinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
       ])
     }
   }
@@ -371,5 +385,13 @@ extension SoundCloudPickerViewController: TrackDownloaderDelegate {
     #if DEBUG
       print("trackDownloader.didCancel")
     #endif
+  }
+
+  func trackDownloaderWillExport(_: TrackDownloader) {
+    DispatchQueue.main.async {
+      self.downloadProgress.isHidden = true
+      self.downloadSpinner.isHidden = false
+      self.downloadDialog.title = "download.title.exporting".localized()
+    }
   }
 }

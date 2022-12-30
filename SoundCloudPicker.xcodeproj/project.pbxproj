@@ -10,6 +10,8 @@
 		BF2B7D0728843DF700176D02 /* SoundCloudPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF713B152882EB5700D0ABAB /* SoundCloudPicker.framework */; platformFilter = ios; };
 		BF2B7D0828843DF700176D02 /* SoundCloudPicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF713B152882EB5700D0ABAB /* SoundCloudPicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BF2B7D0E28843E8400176D02 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF2B7D1028843E8400176D02 /* Localizable.strings */; };
+		BF356F11295EF7A1000DD9A8 /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF356F10295EF7A1000DD9A8 /* Metadata.swift */; };
+		BF356F15295F1EF0000DD9A8 /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF356F14295F1EF0000DD9A8 /* FileCache.swift */; };
 		BF713B192882EB5700D0ABAB /* SoundCloudPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = BF713B182882EB5700D0ABAB /* SoundCloudPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF713B262882EB9200D0ABAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF713B252882EB9200D0ABAB /* AppDelegate.swift */; };
 		BF713B2A2882EB9200D0ABAB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF713B292882EB9200D0ABAB /* ViewController.swift */; };
@@ -58,6 +60,8 @@
 /* Begin PBXFileReference section */
 		BF2B7D0F28843E8400176D02 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BF2B7D1128843E9A00176D02 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BF356F10295EF7A1000DD9A8 /* Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metadata.swift; sourceTree = "<group>"; };
+		BF356F14295F1EF0000DD9A8 /* FileCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCache.swift; sourceTree = "<group>"; };
 		BF713B152882EB5700D0ABAB /* SoundCloudPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SoundCloudPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF713B182882EB5700D0ABAB /* SoundCloudPicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SoundCloudPicker.h; sourceTree = "<group>"; };
 		BF713B232882EB9200D0ABAB /* SoundCloudPickerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoundCloudPickerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -193,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				BF713B462882FAC500D0ABAB /* DataSourceEntities.swift */,
+				BF356F10295EF7A1000DD9A8 /* Metadata.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -203,6 +208,7 @@
 				BF713B492882FAFA00D0ABAB /* DataSource.swift */,
 				BF713B4B2882FB0E00D0ABAB /* TokenProvider.swift */,
 				BF713B4D2882FB2E00D0ABAB /* TrackDownloader.swift */,
+				BF356F14295F1EF0000DD9A8 /* FileCache.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -341,6 +347,8 @@
 				BF713B402882FA2900D0ABAB /* String+Localization.swift in Sources */,
 				BF713B3B2882F9E300D0ABAB /* EmptyView.swift in Sources */,
 				BF713B532882FC1A00D0ABAB /* SoundCloudPickerSearchController.swift in Sources */,
+				BF356F11295EF7A1000DD9A8 /* Metadata.swift in Sources */,
+				BF356F15295F1EF0000DD9A8 /* FileCache.swift in Sources */,
 				BF713B512882FB4300D0ABAB /* Configuration.swift in Sources */,
 				BF713B422882FA4000D0ABAB /* TableCell.swift in Sources */,
 				BF713B3E2882FA1300D0ABAB /* Bundle+Extensions.swift in Sources */,

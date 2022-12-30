@@ -14,21 +14,19 @@ class ViewController: UIViewController {
   @IBOutlet var artist: UILabel!
   @IBOutlet var trackName: UILabel!
 
-  var picker: SoundCloudPicker!
-
   override func viewDidLoad() {
     super.viewDidLoad()
+  }
 
+  @IBAction func handleClickOpen(_: Any) {
     let conf = SoundCloudPickerConfiguration(
       clientId: ProcessInfo.processInfo.environment["CLIENT_ID"] ?? "",
       clientSecret: ProcessInfo.processInfo.environment["CLIENT_SECRET"] ?? ""
     )
 
-    picker = SoundCloudPicker(configuration: conf)
+    let picker = SoundCloudPicker(configuration: conf)
     picker.pickerDelegate = self
-  }
 
-  @IBAction func handleClickOpen(_: Any) {
     present(picker, animated: true)
   }
 }

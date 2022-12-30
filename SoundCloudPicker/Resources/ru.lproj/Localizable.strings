@@ -19,5 +19,6 @@
 "error.serverError.description" = "Упс! Что-то пошло не так. Пожалуйста, попробуйте еще раз.\n\nЗамечание: SoundCloud может быть недоступен в некоторых регионах из-за местных законов.";
 
 "download.title" = "Скачивание";
+"download.title.exporting" = "Экспортирование";
 "download.cancel" = "Отменить";
 

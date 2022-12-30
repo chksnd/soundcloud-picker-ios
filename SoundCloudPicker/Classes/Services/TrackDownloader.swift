@@ -7,24 +7,31 @@
 
 import AVFoundation
 import Foundation
+import UIKit
 
 enum TrackDownloaderError: Error {
   case common(String)
 }
 
 protocol TrackDownloaderDelegate {
-  func trackDownloader(_ trackDownloader: TrackDownloader, onProgress progress: Float)
-  func trackDownloader(_ trackDownloader: TrackDownloader, didFinishAt audioURL: URL)
-  func trackDownloader(_ trackDownloader: TrackDownloader, didFailWith error: Error)
-  func trackDownloaderDidCancel(_ trackDownloader: TrackDownloader)
+  func trackDownloader(_ downloader: TrackDownloader, onProgress progress: Float)
+  func trackDownloader(_ downloader: TrackDownloader, didFinishAt url: URL)
+  func trackDownloader(_ downloader: TrackDownloader, didFailWith error: Error)
+  func trackDownloaderDidCancel(_ downloader: TrackDownloader)
+  func trackDownloaderWillExport(_ downloader: TrackDownloader)
 }
 
-class TrackDownloader: NSObject {
-  private lazy var session = URLSession(configuration: .default, delegate: self, delegateQueue: nil)
+protocol TrackDownloader {
+  func download(item: DataSourceItem)
+  func cancel()
+}
 
-  private var delegate: TrackDownloaderDelegate
+class DefaultTrackDownloader: NSObject, TrackDownloader {
+  private lazy var session = URLSession(configuration: .default, delegate: self, delegateQueue: nil)
   private var task: URLSessionDownloadTask?
-  private var item: DataSourceItem?
+  private let cache = FileCache.cache
+  private var currentItem: DataSourceItem?
+  private var delegate: TrackDownloaderDelegate
 
   init(delegate: TrackDownloaderDelegate) {
     self.delegate = delegate
@@ -46,10 +53,23 @@ class TrackDownloader: NSObject {
       "Authorization": "OAuth \(TokenProvider.shared.getToken())",
     ]
 
+    if let cachedResponse = cache.cachedResponse(for: request) {
+      let location = FileManager.default.temporaryDirectory.appendingPathComponent(item.id.description)
+      if FileManager.default.fileExists(atPath: location.path) {
+        try? FileManager.default.removeItem(at: location)
+      }
+
+      try? cachedResponse.data.write(to: location)
+
+      handleDownloadedFile(forItem: item, atURL: location)
+      return
+    }
+
     task = session.downloadTask(with: request)
     task?.resume()
 
-    self.item = item
+    // store current item
+    currentItem = item
   }
 
   func cancel() {
@@ -58,31 +78,44 @@ class TrackDownloader: NSObject {
   }
 }
 
-extension TrackDownloader: URLSessionDownloadDelegate {
-  func urlSession(_: URLSession, downloadTask _: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+extension DefaultTrackDownloader: URLSessionDownloadDelegate {
+  func urlSession(_: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+    guard let item = currentItem, let response = downloadTask.response, let request = downloadTask.originalRequest else {
+      return
+    }
+
+    let cachedResponse = CachedURLResponse(response: response, data: try! Data(contentsOf: location))
+    cache.storeCachedResponse(cachedResponse, for: request)
+
+    handleDownloadedFile(forItem: item, atURL: location)
+
+    task = nil
+  }
+
+  func urlSession(_: URLSession, downloadTask: URLSessionDownloadTask, didWriteData _: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
+    if downloadTask == task {
+      let calculatedProgress = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
+      delegate.trackDownloader(self, onProgress: calculatedProgress)
+    }
+  }
+}
+
+extension DefaultTrackDownloader {
+  func handleDownloadedFile(forItem item: DataSourceItem, atURL url: URL) {
+    delegate.trackDownloaderWillExport(self)
+
     do {
-      let documentsDirectory = try FileManager.default.url(
-        for: .documentDirectory,
-        in: .userDomainMask,
-        appropriateFor: nil,
-        create: true
-      )
+      let exportURL = FileManager.default.temporaryDirectory.appendingPathComponent("\(item.id).m4a")
+      let audioURL = FileManager.default.temporaryDirectory.appendingPathComponent("\(item.id).mp3")
 
-      let tracksDirectory = documentsDirectory.appendingPathComponent("sc", isDirectory: true)
-      try FileManager.default.createDirectory(at: tracksDirectory, withIntermediateDirectories: true, attributes: nil)
-
-      let audioURL = tracksDirectory.appendingPathComponent("\(item!.id).mp3")
-      let exportURL = tracksDirectory.appendingPathComponent("\(item!.id).m4a")
-
-      if FileManager.default.fileExists(atPath: audioURL.path) {
-        try FileManager.default.removeItem(at: audioURL)
+      // clean up tmp files
+      [exportURL, audioURL].forEach {
+        if FileManager.default.fileExists(atPath: $0.path) {
+          try? FileManager.default.removeItem(at: $0)
+        }
       }
 
-      if FileManager.default.fileExists(atPath: exportURL.path) {
-        try FileManager.default.removeItem(at: exportURL)
-      }
-
-      try FileManager.default.moveItem(at: location, to: audioURL)
+      try FileManager.default.moveItem(at: url, to: audioURL)
 
       let asset = AVAsset(url: audioURL)
 
@@ -93,17 +126,16 @@ extension TrackDownloader: URLSessionDownloadDelegate {
 
       exporter.outputURL = exportURL
       exporter.outputFileType = .m4a
-      exporter.metadata = createMetadata(forItem: item!)
+      exporter.metadata = item.getMetadata()
       exporter.timeRange = CMTimeRangeMake(start: .zero, duration: asset.duration)
       exporter.exportAsynchronously {
         if exporter.status == .completed {
           self.delegate.trackDownloader(self, didFinishAt: exportURL)
 
-          do {
-            try FileManager.default.removeItem(at: audioURL)
-          } catch {
-            //
+          if FileManager.default.fileExists(atPath: audioURL.path) {
+            try? FileManager.default.removeItem(at: audioURL)
           }
+
           return
         }
 
@@ -117,44 +149,5 @@ extension TrackDownloader: URLSessionDownloadDelegate {
     } catch {
       delegate.trackDownloader(self, didFailWith: error)
     }
-
-    task = nil
-  }
-
-  func urlSession(_: URLSession, downloadTask: URLSessionDownloadTask, didWriteData _: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
-    if downloadTask == task {
-      let calculatedProgress = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
-      delegate.trackDownloader(self, onProgress: calculatedProgress)
-    }
-  }
-
-  private func createMetadata(forItem item: DataSourceItem) -> [AVMetadataItem] {
-    var map: [NSString: NSObject] = [
-      AVMetadataKey.commonKeyAlbumName as NSString: item.title as NSString,
-      AVMetadataKey.commonKeyTitle as NSString: item.title as NSString,
-      AVMetadataKey.commonKeyArtist as NSString: item.user.username as NSString,
-    ]
-
-    if let artworkURL = URL(string: item.artwork_url!) {
-      map[AVMetadataKey.commonKeyArtwork as NSString] = try? Data(contentsOf: artworkURL) as NSData
-    }
-
-    var metadata: [AVMetadataItem] = []
-
-    for (key, value) in map {
-      let item = AVMutableMetadataItem()
-      item.keySpace = .common
-      item.key = key
-
-      if key == AVMetadataKey.commonKeyArtwork as NSString {
-        item.value = value as! NSData
-      } else {
-        item.value = value as! NSString
-      }
-
-      metadata.append(item)
-    }
-
-    return metadata
   }
 }
