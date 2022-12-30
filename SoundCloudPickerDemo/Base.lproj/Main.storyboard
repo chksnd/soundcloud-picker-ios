@@ -30,21 +30,20 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I8C-nr-mNl" userLabel="Artwork">
-                                <rect key="frame" x="157" y="398" width="100" height="100"/>
+                                <rect key="frame" x="0.0" y="241" width="414" height="414"/>
                                 <color key="backgroundColor" systemColor="systemGray2Color"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="1cg-eQ-gUo"/>
-                                    <constraint firstAttribute="width" constant="100" id="4tg-LD-U6S"/>
+                                    <constraint firstAttribute="width" secondItem="I8C-nr-mNl" secondAttribute="height" multiplier="1:1" id="eCQ-Lf-tO8"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLA-Qs-K0n" userLabel="Artist">
-                                <rect key="frame" x="167.5" y="514" width="79" height="41"/>
+                                <rect key="frame" x="167.5" y="671" width="79" height="41"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XSw-bE-5kX" userLabel="Title">
-                                <rect key="frame" x="186" y="571" width="42" height="21"/>
+                                <rect key="frame" x="186" y="728" width="42" height="21"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -56,6 +55,7 @@
                             <constraint firstItem="JLA-Qs-K0n" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0GQ-6x-Adw"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="1Lo-E2-Qaz" secondAttribute="bottom" id="5b0-Lu-gdv"/>
                             <constraint firstItem="I8C-nr-mNl" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Ail-Ef-zdL"/>
+                            <constraint firstItem="I8C-nr-mNl" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" id="Auk-5N-9f6"/>
                             <constraint firstItem="XSw-bE-5kX" firstAttribute="top" secondItem="JLA-Qs-K0n" secondAttribute="bottom" constant="16" id="DFJ-Sj-OiX"/>
                             <constraint firstItem="XSw-bE-5kX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EBt-jm-VR4"/>
                             <constraint firstItem="1Lo-E2-Qaz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="G5F-9v-rzR"/>

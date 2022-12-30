@@ -18,8 +18,11 @@ extension DataSourceItem {
       AVMetadataKey.commonKeyArtist as NSString: item.user.username as NSString,
     ]
 
-    if let artworkURL = URL(string: item.artwork_url!) {
-      map[AVMetadataKey.commonKeyArtwork as NSString] = try? Data(contentsOf: artworkURL) as NSData
+    if let artwork = item.artwork_url {
+      let fixedArtwork = artwork.replacingOccurrences(of: "-large", with: "-original")
+      if let url = URL(string: fixedArtwork) {
+        map[AVMetadataKey.commonKeyArtwork as NSString] = try? Data(contentsOf: url) as NSData
+      }
     }
 
     var metadata: [AVMetadataItem] = []
