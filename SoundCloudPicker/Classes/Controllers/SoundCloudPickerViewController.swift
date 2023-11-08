@@ -11,6 +11,7 @@ import UIKit
 protocol SoundCloudPickerViewControllerDelegate {
   func soundCloudPickerViewController(_ viewController: SoundCloudPickerViewController, didSelectTrack url: URL)
   func soundCloudPickerViewControllerDidCancel(_ viewController: SoundCloudPickerViewController)
+  func soundCloudPickerViewControllerLimitReached(_ viewController: SoundCloudPickerViewController)
 }
 
 public class SoundCloudPickerViewController: UIViewController {
@@ -318,9 +319,13 @@ extension SoundCloudPickerViewController: DataSourceDelegate {
         DispatchQueue.global().async {
           self.dataSource.invalidateToken()
         }
-      case .limitReached: self.showEmptyView(with: .limitReached)
-      case .noResults: self.showEmptyView(with: .noResults)
-      default: self.showEmptyView(with: .serverError)
+      case .limitReached:
+        self.showEmptyView(with: .limitReached)
+        self.delegate?.soundCloudPickerViewControllerLimitReached(self)
+      case .noResults:
+        self.showEmptyView(with: .noResults)
+      default:
+        self.showEmptyView(with: .serverError)
       }
     }
   }

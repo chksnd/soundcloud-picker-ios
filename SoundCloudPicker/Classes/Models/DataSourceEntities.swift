@@ -1,5 +1,5 @@
 //
-//  DataSource.swift
+//  DataSourceEntities.swift
 //  SoundCloudPicker
 //
 //  Created by Aibek Mazhitov on 16.07.22.

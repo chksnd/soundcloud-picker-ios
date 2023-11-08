@@ -63,4 +63,8 @@ extension ViewController: SoundCloudPickerDelegate {
   func soundCloudPickerDidCancel(_: SoundCloudPicker) {
     dismiss(animated: true)
   }
+
+  func soundCloudPickerLimitReached(_: SoundCloudPicker) {
+    print("soundcloud api limit reached")
+  }
 }

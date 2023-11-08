@@ -10,6 +10,7 @@ import UIKit
 public protocol SoundCloudPickerDelegate {
   func soundCloudPicker(_ soundCloudPicker: SoundCloudPicker, didSelectTrack url: URL)
   func soundCloudPickerDidCancel(_ soundCloudPicker: SoundCloudPicker)
+  func soundCloudPickerLimitReached(_ soundCloudPicker: SoundCloudPicker)
 }
 
 public class SoundCloudPicker: UINavigationController {
@@ -45,5 +46,9 @@ extension SoundCloudPicker: SoundCloudPickerViewControllerDelegate {
 
   func soundCloudPickerViewControllerDidCancel(_: SoundCloudPickerViewController) {
     pickerDelegate?.soundCloudPickerDidCancel(self)
+  }
+
+  func soundCloudPickerViewControllerLimitReached(_: SoundCloudPickerViewController) {
+    pickerDelegate?.soundCloudPickerLimitReached(self)
   }
 }
