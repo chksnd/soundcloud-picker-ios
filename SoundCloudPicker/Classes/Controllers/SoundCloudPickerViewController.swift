@@ -339,8 +339,11 @@ extension SoundCloudPickerViewController: DataSourceDelegate {
       self.spinner.stopAnimating()
 
       switch error {
-      case .limitReached: self.showEmptyView(with: .limitReached)
-      default: self.showEmptyView(with: .serverError)
+      case .limitReached:
+        self.showEmptyView(with: .limitReached)
+        self.delegate?.soundCloudPickerViewControllerLimitReached(self)
+      default:
+        self.showEmptyView(with: .serverError)
       }
     }
   }
